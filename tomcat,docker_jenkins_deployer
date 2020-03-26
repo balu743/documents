@@ -36,13 +36,10 @@ first server
    14  cd meta-inf
    15  cd META-INF
    16  ll
-   17  cd context.xml
-   18  cd context.xml /
    19  vi context.xml
-   20  cd..
    21  cd ..
    22  ll
-   23  cd manger
+   
    24  cd manager/
    25  ll
    26  cd META-INF/
@@ -61,76 +58,12 @@ first server
    39  ll
    40  cd conf/
    41  ll
-   42  cd tomcat-users.xml
-   43  vi tomcat-users.xml
-   44  cd ..
-   45  ll
-   46  cd bin
-   47  ./shutdown.sh
-   48  ll
-   49  ./startup.sh
-   50  cd ..
-   51  ll
-   52  cd conf
-   53  ll
-   54  cd tomcat-users.xml
    55  vi tomcat-users.xml
    56  cd ..
    57  cd bin
    58  ./shutdown.sh
    59  ./startup.sh
-   60  cd bin
-   61  ll
-   62  cd conf
-   63  cd ..
-   64  ll
-   65  cd conf
-   66  ll
-   67  vi tomcat-users.xml
-   68  cd ..
-   69  ll
-   70  cd bin
-   71  ll
-   72  ./shutdown.sh
-   73  ./startup.sh
-   74  cd ..
-   75  ll
-   76  cd webapps/
-   77  ll
-   78  cd .
-   79  cd  con
-   80  cdc..
-   81  cd ..
-   82  cd conf/
-   83  lll
-   84  ll
-   85  vi tomcat-users.xml
-   86  cd ..
-   87  cd bin/
-   88  ll
-   89  ./shutdown.sh
-   90  ./startup.sh
-   91  cd ..
-   92  cd conf/
-   93  vi tomcat-users.x
-   94  vi tomcat-users.xml
-   95  cd ..
-   96  cd bin/
-   97  ./shutdown.sh
-   98  ./startup.sh
-   99  cd ...
-  100  cd ..
-  101  cd conf/
-  102  vi tomcat-users.xml
-  103  cd ..
-  104  cd bin/
-  105  ./shutdown.sh
-  106  ./startup.sh
-  107  cd ..
-  108  cd conf/
-  109  vi server.xml
-  110  ll
-  111  vi tomcat-users.xml
+
 
   
 
@@ -146,11 +79,11 @@ first server
 
 
 
-docker install::--
+   docker install::--
 
 
 
- dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+   dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
    66  dnf repolist -v
    69  sudo dnf install docker-ce-3:18.09.1-3.el7
    70  systemctl is-active docker
