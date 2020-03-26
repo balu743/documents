@@ -1,0 +1,15 @@
+kubectl create deployment nginx --image=nginx
+   87  kubectl get deployments
+   88  kubectl get pods
+   89  kubectl get svc
+   90  kubectl create service loadbalancer nginx --tcp=80:80
+   96  kubectl get services
+   
+   
+   go to ec2 services
+   click loadbalancer
+   check loadbalancer instences status inservice (are)uotservice 
+   status getting inservice 
+   go to discription copy dnsname
+   place the dnsname in UI
+   
