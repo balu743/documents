@@ -1,0 +1,163 @@
+first server 
+
+
+ 1  yum install java-1.8.0-openjdk java-1.8.0-openjdk-devel -y
+    2  cd /opt
+    3  yum install git wget -y
+    4  wget http://apachemirror.wuchna.com/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+    5  tar xvf apache-maven-3.6.3-bin.tar.gz
+    6  vi /etc/profile.d/maven.sh
+    7  source /etc/profile.d/maven.sh
+    8  mvn -version
+    9  ll
+   10  sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+   11  sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+   12  sudo yum install jenkins -y
+   13  service jenkins start
+   14  cat /var/lib/jenkins/secrets/initialAdminPassword
+ 
+ 
+ second server
+ 
+
+  1  yum install java-1.8.0-openjdk java-1.8.0-openjdk-devel -y
+    2  cd /opt
+    3  yum install git wget -y
+    4  wget http://apachemirror.wuchna.com/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+    5  wget http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.51/bin/apache-tomcat-8.5.51.tar.gz
+    6  tar xvf apache-tomcat-8.5.51.tar.gz
+    7  ll
+    8  cd apache-tomcat-8.5.51
+    9  ll
+   10  cd webapps
+   11  ll
+   12  cd host-manager/
+   13  ll
+   14  cd meta-inf
+   15  cd META-INF
+   16  ll
+   17  cd context.xml
+   18  cd context.xml /
+   19  vi context.xml
+   20  cd..
+   21  cd ..
+   22  ll
+   23  cd manger
+   24  cd manager/
+   25  ll
+   26  cd META-INF/
+   27  ll
+   28  vi context.xml
+   29  cd ..
+   30  ll
+   31  cd bin
+   32  ll
+   33  ./startup.sh
+   34  cd ..
+   35  ll
+   36  cd webapps/
+   37  ll
+   38  cd ..
+   39  ll
+   40  cd conf/
+   41  ll
+   42  cd tomcat-users.xml
+   43  vi tomcat-users.xml
+   44  cd ..
+   45  ll
+   46  cd bin
+   47  ./shutdown.sh
+   48  ll
+   49  ./startup.sh
+   50  cd ..
+   51  ll
+   52  cd conf
+   53  ll
+   54  cd tomcat-users.xml
+   55  vi tomcat-users.xml
+   56  cd ..
+   57  cd bin
+   58  ./shutdown.sh
+   59  ./startup.sh
+   60  cd bin
+   61  ll
+   62  cd conf
+   63  cd ..
+   64  ll
+   65  cd conf
+   66  ll
+   67  vi tomcat-users.xml
+   68  cd ..
+   69  ll
+   70  cd bin
+   71  ll
+   72  ./shutdown.sh
+   73  ./startup.sh
+   74  cd ..
+   75  ll
+   76  cd webapps/
+   77  ll
+   78  cd .
+   79  cd  con
+   80  cdc..
+   81  cd ..
+   82  cd conf/
+   83  lll
+   84  ll
+   85  vi tomcat-users.xml
+   86  cd ..
+   87  cd bin/
+   88  ll
+   89  ./shutdown.sh
+   90  ./startup.sh
+   91  cd ..
+   92  cd conf/
+   93  vi tomcat-users.x
+   94  vi tomcat-users.xml
+   95  cd ..
+   96  cd bin/
+   97  ./shutdown.sh
+   98  ./startup.sh
+   99  cd ...
+  100  cd ..
+  101  cd conf/
+  102  vi tomcat-users.xml
+  103  cd ..
+  104  cd bin/
+  105  ./shutdown.sh
+  106  ./startup.sh
+  107  cd ..
+  108  cd conf/
+  109  vi server.xml
+  110  ll
+  111  vi tomcat-users.xml
+
+  
+
+
+
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-jmx"/>
+  <role rolename="manager-status"/>
+  <user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+  <user username="deployer" password="deployer" roles="manager-script"/>
+  <user username="tomcat" password="s3cret" roles="manager-gui"/>
+
+
+
+docker install::--
+
+
+
+ dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+   66  dnf repolist -v
+   69  sudo dnf install docker-ce-3:18.09.1-3.el7
+   70  systemctl is-active docker
+   71  systemctl start docker
+   72  systemctl docker status
+   73  service docker status
+   74  usermod -aG docker jenkins
+   75  service jenkins restart
+
+

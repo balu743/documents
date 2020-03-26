@@ -1,0 +1,52 @@
+ yum update
+    2  yum update -y
+    3  yum install java-1.8.0-openjdk java-1.8.0-openjdk-devel
+    4  yum install git
+    5  git clone https://github.com/Naresh240/HelloSpringEKS.git
+    6  ll
+    7  cd HelloSpringEKS/
+    8  ll
+    9  git branch
+   10  git add .
+   11  git commit -m "file push in my gitgub"
+   12  ll
+   13  mv ./* /opt/eks/
+   14  history
+
+
+ cd opt
+    2  cd /opt
+    3  yum update -y
+    4  yum install java-1.8.0-openjdk java-1.8.0-openjdk-devel -y
+    5  yum install wget
+    6  yum install git
+    7  wget sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+    8  sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    9  sudo yum install jenkins
+   10  service jenkins start
+   11  service jenkins status
+   12  mkdir eks
+   13  ll
+   14  cd eks
+   15  ll
+   16  git add .
+   17  git add .
+   18  cd
+   19  cd /opt/
+   20  git clone https://github.com/balu743/hellospringbooteks.git
+   21  ll
+   22  cd hellospringbooteks/
+   23  ll
+   24  echo "# hellospringbooteks" >> README.md
+   25  ll
+   26  mv /opt/eks/* /opt/hellospringbooteks/
+   27  ll
+   28  git add .
+   29  git commit -m "all files push my git hub"
+   30  git push
+   31  cd
+   32  cd /opt/
+   33  cat /var/lib/jenkins/secrets/initialAdminPassword
+   34  history
+this commonds use in locall server 
+some changes do in your won github and webhooks

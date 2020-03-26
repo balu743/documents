@@ -1,0 +1,129 @@
+Authenticating with public key "Imported-Openssh-Key: C:\\Users\\SANDEEP\\Downloads\\march31.pem"
+     ┌────────────────────────────────────────────────────────────────────┐
+     │                        • MobaXterm 12.2 •                          │
+     │            (SSH client, X-server and networking tools)             │
+     │                                                                    │
+     │ ➤ SSH session to ec2-user@13.233.82.3                              │
+     │   • SSH compression : ✔                                            │
+     │   • SSH-browser     : ✔                                            │
+     │   • X11-forwarding  : ✘  (disabled or not supported by server)     │
+     │   • DISPLAY         : 192.168.1.16:0.0                             │
+     │                                                                    │
+     │ ➤ For more info, ctrl+click on help or visit our website           │
+     └────────────────────────────────────────────────────────────────────┘
+
+Last login: Tue Feb 25 06:14:55 2020 from 115.99.251.55
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+No packages needed for security; 14 packages available
+Run "sudo yum update" to apply all updates.
+[ec2-user@ip-172-31-33-45 ~]$ sudo -i
+[root@ip-172-31-33-45 ~]# kubectl get nodes
+NAME                                             STATUS   ROLES    AGE   VERSION
+ip-192-168-139-116.ap-south-1.compute.internal   Ready    <none>   21m   v1.14.8-eks-b8860f
+ip-192-168-147-203.ap-south-1.compute.internal   Ready    <none>   21m   v1.14.8-eks-b8860f
+ip-192-168-99-97.ap-south-1.compute.internal     Ready    <none>   21m   v1.14.8-eks-b8860f
+[root@ip-172-31-33-45 ~]# kubectl create deployment --image nginx nginx
+deployment.apps/nginx created
+[root@ip-172-31-33-45 ~]# kubectl get deployments
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+nginx   1/1     1            1           14s
+[root@ip-172-31-33-45 ~]# kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-65f88748fd-dhbbf   1/1     Running   0          20s
+[root@ip-172-31-33-45 ~]# kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   46m
+[root@ip-172-31-33-45 ~]# kubectl expose deployment nginx --port 80 --type LoadBalancer
+service/nginx exposed
+[root@ip-172-31-33-45 ~]# kubectl get services
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP                                                                PORT(S)        AGE
+kubernetes   ClusterIP      10.100.0.1       <none>                                                                     443/TCP        48m
+nginx        LoadBalancer   10.100.205.244   af22a675e579f11eaa86d02ba4b103c7-1645016541.ap-south-1.elb.amazonaws.com   80:30589/TCP   9s
+[root@ip-172-31-33-45 ~]# kubectl get all
+NAME                         READY   STATUS    RESTARTS   AGE
+pod/nginx-65f88748fd-dhbbf   1/1     Running   0          5m37s
+
+NAME                 TYPE           CLUSTER-IP       EXTERNAL-IP                                                                PORT(S)        AGE
+service/kubernetes   ClusterIP      10.100.0.1       <none>                                                                     443/TCP        51m
+service/nginx        LoadBalancer   10.100.205.244   af22a675e579f11eaa86d02ba4b103c7-1645016541.ap-south-1.elb.amazonaws.com   80:30589/TCP   3m13s
+
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx   1/1     1            1           5m37s
+
+NAME                               DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-65f88748fd   1         1         1       5m37s
+[root@ip-172-31-33-45 ~]# kubectl delete deployment nginx
+deployment.extensions "nginx" deleted
+[root@ip-172-31-33-45 ~]# kubectl get pods
+No resources found.
+[root@ip-172-31-33-45 ~]# kubectl get deployments
+No resources found.
+[root@ip-172-31-33-45 ~]# kubectl get svc
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP                                                                PORT(S)        AGE
+kubernetes   ClusterIP      10.100.0.1       <none>                                                                     443/TCP        52m
+nginx        LoadBalancer   10.100.205.244   af22a675e579f11eaa86d02ba4b103c7-1645016541.ap-south-1.elb.amazonaws.com   80:30589/TCP   4m7s
+[root@ip-172-31-33-45 ~]# kubectl delete svc niginx
+Error from server (NotFound): services "niginx" not found
+[root@ip-172-31-33-45 ~]# kubectl delete svc nginx
+service "nginx" deleted
+[root@ip-172-31-33-45 ~]# kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   52m
+[root@ip-172-31-33-45 ~]# history
+    1  yum install python2-pip -y
+    2  pi2 awscli install
+    3  pip2 install awscli
+    4  aws configure
+    5  curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/kubectl
+    6  chmod +x ./kubectl
+    7  mkdir -p $HOME/bin
+    8  cp ./kubectl $HOME/bin/kubectl
+    9  export PATH=$HOME/bin:$PATH
+   10  echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+   11  source $HOME/.bashrc
+   12  kubectl version --short --client
+   13  curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator
+   14  chmod +x ./aws-iam-authenticator
+   15  cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator
+   16  export PATH=$HOME/bin:$PATH
+   17  echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+   18  source ~/.bashrc
+   19  aws-iam-authenticator --help
+   20  aws eks create-cluster   --name eks-cluster   --region ap-south-1   --role-arn arn:aws:iam::704505967285:role/eksrole    --resources-vpc-config subnetIds=subnet-074c460c340b06681,subnet-07e00b2a1b2f555b4,securityGroupIds=sg-013c7facd3b194252
+   21  aws eks --region ap-south-1 describe --name eks-cluster -- query cluster.status
+   22  aws eks --region us-east-1 describe-cluster --name eks-cluster --query cluster.status
+   23  aws eks --region ap-south-1 describe-cluster --name eks-cluster --query cluster.status
+   24  aws eks --region us-east-1 update-kubeconfig --name eks-cluster
+   25  aws eks --region ap-south-1 update-kubeconfig --name eks-cluster
+   26  curl -o aws-auth-cm.yaml https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2019-02-11/aws-auth-cm.yaml
+   27  vi aws-auth-cm.yaml
+   28  kubectl apply -f aws-auth-cm.yaml
+   29  kubectl get nodes --watch
+   30  get nodes
+   31  kubectl get nodes
+   32  kubectl get nodes -o wide
+   33  kubectl get nodes
+   34  kubectl create deployment --image nginx nginx
+   35  kubectl get deployments
+   36  kubectl get pods
+   37  kubectl get services
+   38  kubectl expose deployment nginx --port 80 --type LoadBalancer
+   39  kubectl get services
+   40  kubectl get all
+   41  kubectl delete deployment nginx
+   42  kubectl get pods
+   43  kubectl get deployments
+   44  kubectl get svc
+   45  kubectl delete svc niginx
+   46  kubectl delete svc nginx
+   47  kubectl get all
+   48  history
+[root@ip-172-31-33-45 ~]#
+
+
+kubectl exec -it jenkins-7464cff4d8-x7q22 -- /bin/bash (connect to jenkins)

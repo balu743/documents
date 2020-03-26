@@ -1,0 +1,42 @@
+    server 1
+	
+	
+	1  hostnamectl set-hostname master
+    2  hostname
+    3  exit
+    4  useradd sandeep
+    5  passwd sandeep
+    6  wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    7  rpm -ivh epel-release-latest-7.noarch.rpm
+    8  yum repolist
+    9  yum — enablerepo=epel install ansible
+   10  yum install ansible  -y
+   11  visudo (you can add root to your user)
+   12  vi /etc/ssh/sshd_config(passwdauthentication say yes)
+   13  service sshd restart
+   14  ll
+   15  su - sandeep(switch to your user)
+   16  history
+
+ssh-keygen
+    2  ssh-copy-id 172.31.33.182
+    3  ssh sandeep@172.31.33.182(to add slave private ip to user)
+    4  vi hosts(give slave private id)
+    6  sudo vi /etc/ansible/hosts (you can give slave private ip)
+    7  vi installjava.yml (you write play book here)
+   10  ansible all -m ping
+   13  ansible-playbook -i hosts installjava.yml
+
+
+server2 
+
+ hostnamectl set-hostname node
+    2  hostname
+    3  exit
+    4  useradd sandeep
+    5  passwd sandeep
+    6  visudo
+    7  vi /etc/ssh/sshd_config
+    8  service sshd restart
+    9  ifconfig
+   10  java --version
