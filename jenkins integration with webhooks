@@ -30,7 +30,7 @@
    14  cd eks
    15  ll
    16  git add .
-   17  git add .
+   
    18  cd
    19  cd /opt/
    20  git clone https://github.com/balu743/hellospringbooteks.git
