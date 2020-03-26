@@ -1,0 +1,7 @@
+Helm Installation on Linux:
+---------------------------
+wget https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz
+tar xvzf helm-v3.0.2-linux-amd64.tar.gz
+cd linux-amd64/
+mv helm /usr/local/bin
+export PATH=$PATH:/usr/local/bin
